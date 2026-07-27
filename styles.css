@@ -154,7 +154,7 @@ select {
 }
 
 .hero-inner {
-  width: min(100%, 960px);
+  width: min(100%, 1080px);
   margin: 0 auto;
 }
 
