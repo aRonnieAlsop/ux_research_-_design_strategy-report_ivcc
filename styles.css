@@ -24,6 +24,7 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 17px;
 }
 
 body {
@@ -807,7 +808,158 @@ p {
   color: var(--gold);
 }
 
+/* =========================================================
+   ECONOMIC CONTEXT
+   Added for the "Designing for a Changing Economy" section.
+   ========================================================= */
+
+.economy-section {
+  overflow: hidden;
+}
+
+.economic-snapshot {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 48px;
+}
+
+.economic-card {
+  min-height: 250px;
+  padding: 34px;
+  background: var(--soft);
+  border-top: 4px solid var(--forest);
+}
+
+.economic-card-outline {
+  background: transparent;
+  border: 2px solid var(--gold);
+  border-top-width: 4px;
+}
+
+.economic-card-label {
+  display: block;
+  margin-bottom: 34px;
+  color: var(--gold);
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.economic-card h3 {
+  margin: 0 0 16px;
+  font-size: clamp(1.65rem, 3vw, 2.25rem);
+}
+
+.economic-card p {
+  margin: 0;
+  color: var(--muted);
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+  font-size: 0.79rem;
+  line-height: 1.62;
+}
+
+.economic-card-outline p {
+  color: #535353;
+}
+
+.economic-note {
+  margin: 50px 0 0;
+  padding: 36px;
+  background: var(--cream);
+  border-left: 4px solid var(--gold);
+}
+
+.economic-note p {
+  margin: 0;
+}
+
+.economy-timeline {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 54px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.timeline-column {
+  min-width: 0;
+  padding: 34px 30px 38px;
+}
+
+.timeline-column + .timeline-column {
+  border-left: 1px solid var(--line);
+}
+
+.timeline-column-current {
+  background: var(--sage);
+}
+
+.timeline-label {
+  display: block;
+  margin-bottom: 27px;
+  color: var(--gold);
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+  font-size: 0.63rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.timeline-column h3 {
+  margin: 0 0 22px;
+  font-size: 1.45rem;
+  line-height: 1.16;
+}
+
+.timeline-column ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.timeline-column li {
+  position: relative;
+  margin: 0;
+  padding: 11px 0 11px 19px;
+  border-top: 1px solid rgba(36, 36, 36, 0.09);
+  color: var(--muted);
+  font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+  font-size: 0.76rem;
+  line-height: 1.5;
+}
+
+.timeline-column li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: var(--gold);
+}
+
+.economy-quote {
+  margin-top: 56px;
+  margin-bottom: 42px;
+}
+
 @media (max-width: 880px) {
+  html {
+    font-size: 16.5px;
+  }
+
   body {
     font-size: 19px;
   }
@@ -824,6 +976,15 @@ p {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .economy-timeline {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-column + .timeline-column {
+    border-left: none;
+    border-top: 1px solid var(--line);
+  }
+
   .principles {
     padding: 70px 38px;
   }
@@ -838,6 +999,10 @@ p {
 }
 
 @media (max-width: 680px) {
+  html {
+    font-size: 16px;
+  }
+
   body {
     font-size: 18px;
     line-height: 1.68;
@@ -886,6 +1051,7 @@ p {
 
   .method-grid,
   .audience-grid,
+  .economic-snapshot,
   .principles-grid {
     grid-template-columns: 1fr;
   }
@@ -906,6 +1072,19 @@ p {
 
   .audience-card {
     padding: 28px 24px;
+  }
+
+  .economic-card {
+    min-height: auto;
+    padding: 29px 24px;
+  }
+
+  .economic-note {
+    padding: 29px 24px;
+  }
+
+  .timeline-column {
+    padding: 30px 24px 34px;
   }
 
   .challenge-row {
