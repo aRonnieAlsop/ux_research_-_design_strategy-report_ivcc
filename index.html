@@ -1,0 +1,1988 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Indian Valley Chamber Website Research & Design Strategy
+  </title>
+
+  <meta
+    name="description"
+    content="A website research and design strategy report for the Indian Valley Chamber of Commerce, based on stakeholder interviews, administrative experience, business member feedback, and analysis of the current website."
+  >
+
+  <meta name="author" content="Arron Alsop">
+
+  <!-- Social sharing -->
+  <meta property="og:type" content="article">
+  <meta
+    property="og:title"
+    content="Indian Valley Chamber Website Research & Design Strategy"
+  >
+  <meta
+    property="og:description"
+    content="A visitor-first website strategy shaped by Chamber members, administrators, community feedback, and real-world use of the current website."
+  >
+
+  <meta name="twitter:card" content="summary_large_image">
+
+  <style>
+    :root {
+      --background: #fbfaf7;
+      --paper: #ffffff;
+      --text: #242424;
+      --muted: #6b6b6b;
+      --faint: #969696;
+      --line: #e7e4de;
+      --soft: #f3f1eb;
+
+      --forest: #294b3a;
+      --forest-dark: #173326;
+      --sage: #dfe7df;
+      --cream: #f4eee2;
+      --gold: #aa8140;
+      --charcoal: #242424;
+
+      --article-width: 720px;
+      --wide-width: 1120px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+      font-size: 20px;
+      line-height: 1.72;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    a {
+      color: inherit;
+      text-decoration-color: var(--gold);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 4px;
+    }
+
+    a:hover {
+      color: var(--forest);
+    }
+
+    button,
+    input,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    ::selection {
+      background: var(--sage);
+      color: var(--forest-dark);
+    }
+
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      width: 0;
+      height: 4px;
+      background: var(--forest);
+      transition: width 80ms linear;
+    }
+
+    .site-header {
+      position: relative;
+      z-index: 10;
+      background: rgba(251, 250, 247, 0.94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-inner {
+      width: min(calc(100% - 40px), var(--wide-width));
+      min-height: 74px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      color: var(--forest-dark);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.73rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      line-height: 1.15;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .brand-mark {
+      width: 35px;
+      height: 35px;
+      flex: 0 0 auto;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--forest);
+      border-radius: 50%;
+      font-size: 0.7rem;
+      letter-spacing: 0;
+    }
+
+    .header-label {
+      color: var(--muted);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      padding: 104px 20px 82px;
+      background:
+        linear-gradient(
+          180deg,
+          rgba(223, 231, 223, 0.8) 0%,
+          rgba(251, 250, 247, 0) 100%
+        );
+    }
+
+    .hero-inner {
+      width: min(100%, 960px);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      margin: 0 0 24px;
+      color: var(--forest);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.69rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      color: var(--charcoal);
+      font-weight: 700;
+      line-height: 1.08;
+      text-wrap: balance;
+    }
+
+    h1 {
+      max-width: 920px;
+      margin: 0;
+      font-size: clamp(3.1rem, 8vw, 6.8rem);
+      letter-spacing: -0.065em;
+    }
+
+    .hero-deck {
+      max-width: 750px;
+      margin: 34px 0 0;
+      color: #494949;
+      font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+      line-height: 1.48;
+    }
+
+    .byline {
+      margin-top: 42px;
+      padding-top: 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 24px;
+      border-top: 1px solid rgba(41, 75, 58, 0.22);
+      color: var(--muted);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.74rem;
+      line-height: 1.5;
+    }
+
+    .byline strong {
+      color: var(--text);
+    }
+
+    .report-nav {
+      width: min(calc(100% - 40px), var(--wide-width));
+      margin: 0 auto;
+      padding: 28px 0;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .report-nav-label {
+      display: block;
+      margin-bottom: 13px;
+      color: var(--faint);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.64rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .report-nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px 22px;
+    }
+
+    .report-nav a {
+      color: var(--muted);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.75rem;
+      text-decoration: none;
+    }
+
+    .report-nav a:hover {
+      color: var(--forest);
+    }
+
+    main {
+      padding-bottom: 110px;
+    }
+
+    .article-section {
+      width: min(calc(100% - 40px), var(--article-width));
+      margin: 0 auto;
+      padding-top: 92px;
+      scroll-margin-top: 30px;
+    }
+
+    .article-section + .article-section {
+      margin-top: 15px;
+    }
+
+    .section-number {
+      display: block;
+      margin-bottom: 17px;
+      color: var(--gold);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0 0 30px;
+      font-size: clamp(2.25rem, 5vw, 4rem);
+      letter-spacing: -0.045em;
+    }
+
+    h3 {
+      margin: 56px 0 19px;
+      font-size: clamp(1.55rem, 3vw, 2.15rem);
+      letter-spacing: -0.025em;
+    }
+
+    h4 {
+      margin: 34px 0 12px;
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.84rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    p {
+      margin: 0 0 28px;
+    }
+
+    .lead {
+      color: #353535;
+      font-size: 1.28rem;
+      line-height: 1.58;
+    }
+
+    .muted {
+      color: var(--muted);
+    }
+
+    .highlight {
+      background:
+        linear-gradient(
+          180deg,
+          transparent 58%,
+          rgba(170, 129, 64, 0.19) 58%
+        );
+    }
+
+    .wide-section {
+      width: min(calc(100% - 40px), var(--wide-width));
+      margin: 92px auto 0;
+      padding: 72px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      box-shadow: 0 18px 55px rgba(31, 39, 34, 0.04);
+    }
+
+    .wide-section h2 {
+      max-width: 790px;
+    }
+
+    .method-grid,
+    .audience-grid,
+    .response-grid,
+    .principles-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .method-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-top: 46px;
+    }
+
+    .method-card {
+      min-height: 184px;
+      padding: 26px;
+      background: var(--soft);
+      border-top: 3px solid var(--forest);
+    }
+
+    .method-card span {
+      display: block;
+      margin-bottom: 30px;
+      color: var(--gold);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.67rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+
+    .method-card h3 {
+      margin: 0 0 12px;
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 1rem;
+      line-height: 1.2;
+      letter-spacing: -0.01em;
+    }
+
+    .method-card p {
+      margin: 0;
+      color: var(--muted);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.76rem;
+      line-height: 1.55;
+    }
+
+    .pull-quote {
+      width: min(calc(100% - 40px), 950px);
+      margin: 105px auto 20px;
+      padding: 70px 74px;
+      background: var(--forest-dark);
+      color: #fff;
+    }
+
+    .pull-quote blockquote {
+      margin: 0;
+      font-size: clamp(2rem, 5vw, 4.5rem);
+      font-weight: 700;
+      line-height: 1.12;
+      letter-spacing: -0.045em;
+      text-wrap: balance;
+    }
+
+    .pull-quote cite {
+      display: block;
+      margin-top: 31px;
+      color: rgba(255, 255, 255, 0.7);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.68rem;
+      font-style: normal;
+      font-weight: 700;
+      letter-spacing: 0.11em;
+      text-transform: uppercase;
+    }
+
+    .research-quote {
+      margin: 45px 0;
+      padding: 10px 0 10px 30px;
+      border-left: 4px solid var(--gold);
+    }
+
+    .research-quote blockquote {
+      margin: 0;
+      color: #343434;
+      font-size: clamp(1.5rem, 3vw, 2.05rem);
+      font-style: italic;
+      line-height: 1.4;
+    }
+
+    .research-quote cite {
+      display: block;
+      margin-top: 20px;
+      color: var(--muted);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.68rem;
+      font-style: normal;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .finding {
+      margin-top: 76px;
+      padding-top: 34px;
+      border-top: 1px solid var(--line);
+    }
+
+    .finding:first-of-type {
+      margin-top: 50px;
+    }
+
+    .finding-label {
+      display: block;
+      margin-bottom: 13px;
+      color: var(--forest);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.67rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .finding h3 {
+      margin: 0 0 24px;
+      font-size: clamp(2rem, 4vw, 3.15rem);
+    }
+
+    .bullet-list {
+      margin: 30px 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .bullet-list li {
+      position: relative;
+      margin: 0;
+      padding: 16px 0 16px 30px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .bullet-list li::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .audience-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 46px;
+    }
+
+    .audience-card {
+      padding: 36px;
+      background: var(--paper);
+      border: 1px solid var(--line);
+    }
+
+    .audience-card.primary {
+      background: var(--forest-dark);
+      border-color: var(--forest-dark);
+      color: white;
+    }
+
+    .audience-card .card-label {
+      display: inline-block;
+      margin-bottom: 30px;
+      color: var(--gold);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .audience-card h3 {
+      margin: 0 0 17px;
+      color: inherit;
+      font-size: 2rem;
+    }
+
+    .audience-card p {
+      margin-bottom: 20px;
+    }
+
+    .audience-card ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+
+    .audience-card li {
+      margin: 8px 0;
+    }
+
+    .audience-card.primary p,
+    .audience-card.primary li {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .observation {
+      margin: 42px 0;
+      padding: 34px;
+      background: var(--cream);
+    }
+
+    .observation-label {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--gold);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.65rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .observation p:last-child {
+      margin-bottom: 0;
+    }
+
+    .challenge-response {
+      margin-top: 55px;
+      border-top: 1px solid var(--line);
+    }
+
+    .challenge-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 44px;
+      padding: 31px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .challenge-column,
+    .response-column {
+      min-width: 0;
+    }
+
+    .column-label {
+      display: block;
+      margin-bottom: 10px;
+      color: var(--faint);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.61rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .challenge-row p {
+      margin: 0;
+    }
+
+    .response-column p {
+      color: var(--forest-dark);
+      font-weight: 700;
+    }
+
+    .principles {
+      width: min(calc(100% - 40px), var(--wide-width));
+      margin: 110px auto 0;
+      padding: 90px 70px;
+      background: #202622;
+      color: white;
+    }
+
+    .principles .section-number {
+      color: var(--gold);
+    }
+
+    .principles h2 {
+      color: white;
+    }
+
+    .principles > p {
+      max-width: 680px;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .principles-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 52px;
+    }
+
+    .principle {
+      padding: 34px 0;
+      border-top: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .principle:nth-child(odd) {
+      padding-right: 40px;
+    }
+
+    .principle:nth-child(even) {
+      padding-left: 40px;
+      border-left: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .principle span {
+      display: block;
+      margin-bottom: 14px;
+      color: var(--gold);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.67rem;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+    }
+
+    .principle p {
+      margin: 0;
+      font-size: clamp(1.25rem, 2.4vw, 1.75rem);
+      font-weight: 700;
+      line-height: 1.32;
+    }
+
+    .recommended-structure {
+      counter-reset: structure;
+      margin-top: 44px;
+    }
+
+    .structure-item {
+      counter-increment: structure;
+      display: grid;
+      grid-template-columns: 62px 1fr;
+      gap: 22px;
+      padding: 28px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .structure-item::before {
+      content: counter(structure, decimal-leading-zero);
+      color: var(--gold);
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+    }
+
+    .structure-item h3 {
+      margin: 0 0 10px;
+      font-size: 1.5rem;
+    }
+
+    .structure-item p {
+      margin: 0;
+      color: var(--muted);
+    }
+
+    .final-statement {
+      width: min(calc(100% - 40px), 960px);
+      margin: 115px auto 0;
+      padding: 85px 75px;
+      background: var(--cream);
+      text-align: center;
+    }
+
+    .final-statement .eyebrow {
+      margin-bottom: 30px;
+    }
+
+    .final-statement h2 {
+      max-width: 780px;
+      margin: 0 auto;
+      color: var(--forest-dark);
+    }
+
+    .final-statement p {
+      max-width: 650px;
+      margin: 34px auto 0;
+      color: #585858;
+    }
+
+    .site-footer {
+      padding: 55px 20px;
+      background: var(--forest-dark);
+      color: rgba(255, 255, 255, 0.72);
+    }
+
+    .footer-inner {
+      width: min(100%, var(--wide-width));
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 40px;
+    }
+
+    .footer-title {
+      margin-bottom: 9px;
+      color: white;
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .footer-text {
+      margin: 0;
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.7rem;
+      line-height: 1.6;
+    }
+
+    .back-to-top {
+      flex: 0 0 auto;
+      color: white;
+      font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    @media (max-width: 880px) {
+      body {
+        font-size: 19px;
+      }
+
+      .hero {
+        padding-top: 78px;
+      }
+
+      .wide-section {
+        padding: 54px 34px;
+      }
+
+      .method-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .principles {
+        padding: 70px 38px;
+      }
+
+      .principle:nth-child(odd) {
+        padding-right: 25px;
+      }
+
+      .principle:nth-child(even) {
+        padding-left: 25px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      body {
+        font-size: 18px;
+        line-height: 1.68;
+      }
+
+      .header-inner {
+        width: min(calc(100% - 28px), var(--wide-width));
+        min-height: 65px;
+      }
+
+      .header-label {
+        display: none;
+      }
+
+      .hero {
+        padding: 68px 22px 60px;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 15vw, 4.7rem);
+        letter-spacing: -0.06em;
+      }
+
+      .hero-deck {
+        margin-top: 28px;
+      }
+
+      .byline {
+        margin-top: 34px;
+      }
+
+      .report-nav {
+        width: min(calc(100% - 30px), var(--wide-width));
+      }
+
+      .article-section {
+        width: min(calc(100% - 34px), var(--article-width));
+        padding-top: 75px;
+      }
+
+      .wide-section {
+        width: min(calc(100% - 24px), var(--wide-width));
+        margin-top: 72px;
+        padding: 44px 23px;
+      }
+
+      .method-grid,
+      .audience-grid,
+      .principles-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .method-card {
+        min-height: auto;
+      }
+
+      .pull-quote {
+        width: 100%;
+        margin-top: 80px;
+        padding: 60px 25px;
+      }
+
+      .research-quote {
+        padding-left: 21px;
+      }
+
+      .audience-card {
+        padding: 28px 24px;
+      }
+
+      .challenge-row {
+        grid-template-columns: 1fr;
+        gap: 18px;
+      }
+
+      .response-column {
+        padding: 22px;
+        background: var(--sage);
+      }
+
+      .principles {
+        width: 100%;
+        padding: 68px 24px;
+      }
+
+      .principle,
+      .principle:nth-child(odd),
+      .principle:nth-child(even) {
+        padding: 29px 0;
+        border-left: none;
+      }
+
+      .structure-item {
+        grid-template-columns: 44px 1fr;
+        gap: 10px;
+      }
+
+      .final-statement {
+        width: min(calc(100% - 24px), 960px);
+        margin-top: 80px;
+        padding: 65px 24px;
+      }
+
+      .footer-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div
+    class="reading-progress"
+    id="readingProgress"
+    aria-hidden="true"
+  ></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top">
+        <span class="brand-mark">IV</span>
+        <span>Indian Valley Website Research</span>
+      </a>
+
+      <span class="header-label">
+        UX Research &amp; Design Strategy
+      </span>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-inner">
+        <p class="eyebrow">
+          Indian Valley Chamber of Commerce
+        </p>
+
+        <h1>
+          Designing a website around the people who actually use it.
+        </h1>
+
+        <p class="hero-deck">
+          A website research and design strategy shaped by Chamber
+          members, administrators, community feedback and firsthand
+          experience managing the current site.
+        </p>
+
+        <div class="byline">
+          <span>
+            <strong>Prepared by:</strong>
+            Arron Alsop
+          </span>
+
+          <span>
+            UX/UI Web Designer
+          </span>
+
+          <span>
+            Indian Valley, California
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <nav
+      class="report-nav"
+      aria-label="Report sections"
+    >
+      <span class="report-nav-label">In this report</span>
+
+      <div class="report-nav-links">
+        <a href="#summary">Executive Summary</a>
+        <a href="#methodology">Research Method</a>
+        <a href="#audiences">Audiences</a>
+        <a href="#findings">Findings</a>
+        <a href="#admin">Admin Experience</a>
+        <a href="#responses">Design Response</a>
+        <a href="#principles">Principles</a>
+      </div>
+    </nav>
+
+    <section
+      class="article-section"
+      id="summary"
+    >
+      <span class="section-number">01 — Executive Summary</span>
+
+      <h2>
+        This is not a redesign for appearance alone.
+      </h2>
+
+      <p class="lead">
+        The purpose of this research is to understand how the current
+        Indian Valley Chamber of Commerce website succeeds, where it
+        creates friction and how a new website can better serve the
+        community over the next decade.
+      </p>
+
+      <p>
+        The current site contains valuable information and has a
+        familiar, readable visual style. It also reflects years of
+        additions, changing administrators, separate plugins,
+        disconnected content areas and technical workarounds.
+      </p>
+
+      <p>
+        Research shows that the strongest solution is not to make the
+        website more elaborate. It is to make it
+        <span class="highlight">
+          clearer, calmer, more useful and easier to manage.
+        </span>
+      </p>
+
+      <p>
+        The redesign should preserve the current site's accessibility
+        and straightforward character while reorganizing its content
+        around two distinct user journeys:
+        <strong>visitors exploring Indian Valley</strong> and
+        <strong>Chamber members seeking resources.</strong>
+      </p>
+    </section>
+
+    <section
+      class="wide-section"
+      id="methodology"
+    >
+      <span class="section-number">02 — Research Methodology</span>
+
+      <h2>
+        Research grounded in real use—not assumptions.
+      </h2>
+
+      <p class="lead">
+        Findings were gathered from conversations, direct observation
+        and firsthand experience completing actual Chamber work.
+      </p>
+
+      <div class="method-grid">
+        <article class="method-card">
+          <span>01</span>
+          <h3>Business Member Interviews</h3>
+          <p>
+            Feedback from people whose businesses are represented and
+            promoted by the Chamber.
+          </p>
+        </article>
+
+        <article class="method-card">
+          <span>02</span>
+          <h3>Board Feedback</h3>
+          <p>
+            Input from Chamber leadership regarding the current site's
+            strengths, priorities and membership needs.
+          </p>
+        </article>
+
+        <article class="method-card">
+          <span>03</span>
+          <h3>Administrative Experience</h3>
+          <p>
+            Direct experience creating pages, forms, event content,
+            member displays and search integrations.
+          </p>
+        </article>
+
+        <article class="method-card">
+          <span>04</span>
+          <h3>Community Feedback</h3>
+          <p>
+            Observations from residents attempting to navigate and use
+            the existing website.
+          </p>
+        </article>
+
+        <article class="method-card">
+          <span>05</span>
+          <h3>Website Audit</h3>
+          <p>
+            Review of navigation, homepage hierarchy, mobile behavior,
+            forms, plugins, SEO and content organization.
+          </p>
+        </article>
+
+        <article class="method-card">
+          <span>06</span>
+          <h3>Economic Research</h3>
+          <p>
+            Analysis of the industries, visitor activity and business
+            opportunities the website should support.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <aside class="pull-quote">
+      <blockquote>
+        “The website should manage content—not require administrators
+        to manage the website.”
+      </blockquote>
+
+      <cite>Guiding design principle</cite>
+    </aside>
+
+    <section
+      class="article-section"
+      id="audiences"
+    >
+      <span class="section-number">03 — Audience Research</span>
+
+      <h2>
+        One website. Two very different customer journeys.
+      </h2>
+
+      <p class="lead">
+        The website serves both the public and the Chamber organization,
+        but those users arrive with different goals.
+      </p>
+
+      <div class="research-quote">
+        <blockquote>
+          “There needs to be some kind of delineation for two different
+          kinds of users: the people seeking membership and resources,
+          and the tourist or potential customers.”
+        </blockquote>
+
+        <cite>Chamber Business Member</cite>
+      </div>
+
+      <div class="audience-grid">
+        <article class="audience-card primary">
+          <span class="card-label">Primary Audience</span>
+
+          <h3>Visitors &amp; Community</h3>
+
+          <p>
+            People exploring Indian Valley should immediately understand
+            where they are, what is here and what they can do next.
+          </p>
+
+          <ul>
+            <li>Things to do</li>
+            <li>Events</li>
+            <li>Places to stay</li>
+            <li>Food and dining</li>
+            <li>Shopping and services</li>
+            <li>Local communities</li>
+            <li>Visitor information</li>
+          </ul>
+        </article>
+
+        <article class="audience-card">
+          <span class="card-label">Secondary Audience</span>
+
+          <h3>Members &amp; Businesses</h3>
+
+          <p>
+            Members need a clear, dedicated path that does not compete
+            with visitor information.
+          </p>
+
+          <ul>
+            <li>Membership renewal</li>
+            <li>Grant opportunities</li>
+            <li>Business resources</li>
+            <li>Event participation</li>
+            <li>Forms and documents</li>
+            <li>Chamber information</li>
+            <li>Marketing opportunities</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="observation">
+        <span class="observation-label">Research Insight</span>
+
+        <p>
+          Visitors are not arriving because they are interested in
+          Chamber administration. They are arriving because they are
+          interested in <strong>Indian Valley.</strong>
+        </p>
+
+        <p>
+          The Chamber's role is to help them discover the community,
+          connect with local businesses and understand what is available.
+        </p>
+      </div>
+    </section>
+
+    <section
+      class="article-section"
+      id="findings"
+    >
+      <span class="section-number">04 — Key Findings</span>
+
+      <h2>
+        What users told us—and what their feedback means.
+      </h2>
+
+      <article class="finding">
+        <span class="finding-label">Finding 01</span>
+
+        <h3>
+          The homepage introduces the Chamber before it introduces
+          Indian Valley.
+        </h3>
+
+        <p>
+          Users expect the homepage to explain the place first. The
+          current welcome and Indian Valley description appear too far
+          down the page, while time-sensitive member programs can appear
+          more prominently.
+        </p>
+
+        <div class="research-quote">
+          <blockquote>
+            “The welcome is way far down on the scroll. It should be
+            first. The sign grant should be toward the end.”
+          </blockquote>
+
+          <cite>Chamber Business Member</cite>
+        </div>
+
+        <p>
+          The first section should establish location, identity and
+          opportunity. Grants and administrative notices should remain
+          accessible within Member Resources or the Bulletin Board.
+        </p>
+      </article>
+
+      <article class="finding">
+        <span class="finding-label">Finding 02</span>
+
+        <h3>
+          Navigation contains repetition and dead ends.
+        </h3>
+
+        <p>
+          Some links return users to content they have already seen or
+          fail to provide a clear next step.
+        </p>
+
+        <div class="research-quote">
+          <blockquote>
+            “The commerce link just loops back to the members page, so
+            either eliminate it or make it do something else.”
+          </blockquote>
+
+          <cite>Chamber Business Member</cite>
+        </div>
+
+        <div class="research-quote">
+          <blockquote>
+            “Every click I made kind of ended up in a dead end.”
+          </blockquote>
+
+          <cite>Community Website User</cite>
+        </div>
+
+        <p>
+          Every page and navigation label should have a unique purpose.
+          Every page should either complete a task or offer a clear route
+          forward.
+        </p>
+      </article>
+
+      <article class="finding">
+        <span class="finding-label">Finding 03</span>
+
+        <h3>
+          The membership directory is the most consistent area of
+          concern.
+        </h3>
+
+        <p>
+          Board members, business members and administrative users
+          repeatedly identified membership functionality as the primary
+          area needing improvement.
+        </p>
+
+        <ul class="bullet-list">
+          <li>Members should be organized by category or industry.</li>
+          <li>Visitors should be able to search and filter businesses.</li>
+          <li>Business websites should be immediately accessible.</li>
+          <li>Information should come from one master record.</li>
+          <li>Businesses without websites should still have useful listings.</li>
+        </ul>
+
+        <div class="research-quote">
+          <blockquote>
+            “Only some of the members have websites. I wish they all did,
+            or that they immediately linked to their website.”
+          </blockquote>
+
+          <cite>Chamber Business Member</cite>
+        </div>
+
+        <div class="research-quote">
+          <blockquote>
+            “The main thing was all the membership stuff.”
+          </blockquote>
+
+          <cite>Chamber Board Member</cite>
+        </div>
+      </article>
+
+      <article class="finding">
+        <span class="finding-label">Finding 04</span>
+
+        <h3>
+          Simplicity and readability are strengths worth preserving.
+        </h3>
+
+        <p>
+          Not every part of the current website needs to be replaced.
+          Feedback indicates that its basic presentation and large
+          typography make it approachable for older residents and users
+          who are less comfortable with technology.
+        </p>
+
+        <div class="research-quote">
+          <blockquote>
+            “It is pretty basic and simple, with large, easy-to-read
+            fonts for our old folks.”
+          </blockquote>
+
+          <cite>Chamber Board Member</cite>
+        </div>
+
+        <p>
+          The redesign should improve structure and functionality without
+          becoming visually complicated or overly technical.
+        </p>
+      </article>
+
+      <article class="finding">
+        <span class="finding-label">Finding 05</span>
+
+        <h3>
+          Mobile feels visually crowded.
+        </h3>
+
+        <p>
+          Large sections, limited spacing and closely stacked elements
+          can create a dense experience on a narrow screen.
+        </p>
+
+        <div class="research-quote">
+          <blockquote>
+            “It feels claustrophobic on the phone. It is too closed up.”
+          </blockquote>
+
+          <cite>Chamber Business Member</cite>
+        </div>
+
+        <p>
+          Mobile design should use generous spacing, shorter sections,
+          comfortable margins and clear separation between ideas.
+        </p>
+      </article>
+
+      <article class="finding">
+        <span class="finding-label">Finding 06</span>
+
+        <h3>
+          Motion disrupts the natural reading flow.
+        </h3>
+
+        <p>
+          Entrance animations and moving content can make scrolling feel
+          unpredictable, especially when multiple elements load at
+          different speeds.
+        </p>
+
+        <div class="research-quote">
+          <blockquote>
+            “I do not like the way it scrolls.”
+          </blockquote>
+
+          <cite>Chamber Business Member</cite>
+        </div>
+
+        <p>
+          Motion should be limited, subtle and purposeful. Content should
+          not make users wait for it to appear.
+        </p>
+      </article>
+    </section>
+
+    <section
+      class="article-section"
+      id="admin"
+    >
+      <span class="section-number">05 — Administrative Research</span>
+
+      <h2>
+        The current site is more difficult to manage than it appears.
+      </h2>
+
+      <p class="lead">
+        The public sees pages. Administrators see the collection of
+        systems, plugins, settings and workarounds required to maintain
+        those pages.
+      </p>
+
+      <p>
+        Firsthand administrative use revealed that routine website work
+        often required technical troubleshooting beyond what should be
+        expected of a small Chamber administrator.
+      </p>
+
+      <h3>Forms and submissions</h3>
+
+      <p>
+        Forms initially appeared to work well, but changes to redirects
+        caused one form to break. Another form stopped functioning after
+        a WordPress update.
+      </p>
+
+      <p>
+        Zeffy ultimately became the easier solution because it simplified
+        registration, submissions and payment collection without requiring
+        the current website to manage those systems itself.
+      </p>
+
+      <h3>Search visibility</h3>
+
+      <p>
+        Google Analytics and Google Search Console had not been connected.
+        The site's ability to communicate with Google and be properly
+        indexed therefore required separate administrative setup.
+      </p>
+
+      <p>
+        SEO should be part of the initial build, including semantic page
+        structure, metadata, sitemap generation, indexing controls and
+        social-sharing information.
+      </p>
+
+      <div class="observation">
+        <span class="observation-label">
+          Firsthand Administrative Observation
+        </span>
+
+        <p>
+          A custom-built business website became easier to locate through
+          Google search than its previous platform-based version. This
+          reinforced the value of treating search visibility as part of
+          the site's foundation rather than an optional feature added later.
+        </p>
+
+        <p>
+          <strong>Source: Admin/PR for IVCC</strong>
+        </p>
+      </div>
+
+      <h3>Security and access</h3>
+
+      <p>
+        Security protections blocked an administrator's IP address after
+        extended website work. While the protection itself served a valid
+        purpose, it also prevented legitimate content management.
+      </p>
+
+      <p>
+        The future system should remain secure without making normal
+        administrative use unnecessarily difficult.
+      </p>
+
+      <h3>Fragmented content management</h3>
+
+      <p>
+        Member logos, member information, page content and image grids
+        are edited in different areas. In some cases, administrators added
+        business information as manually placed images rather than as
+        structured website data.
+      </p>
+
+      <p>
+        The result feels less like a single content system and more like
+        a series of rooms added at different times, each with its own
+        entrance and rules.
+      </p>
+
+      <div class="research-quote">
+        <blockquote>
+          “It feels like a Winchester Mystery House.”
+        </blockquote>
+
+        <cite>Admin/PR for IVCC</cite>
+      </div>
+
+      <h3>HTML widgets as a workaround</h3>
+
+      <p>
+        HTML widgets make it possible to create custom sections inside a
+        platform, but the custom code still lives inside the platform's
+        theme, page builder and plugin environment.
+      </p>
+
+      <ul class="bullet-list">
+        <li>Styles can conflict with the existing theme.</li>
+        <li>Page-builder updates can change widget behavior.</li>
+        <li>Responsive layouts require additional manual fixes.</li>
+        <li>Content may need to be entered more than once.</li>
+        <li>Administrators must edit code instead of completing a form.</li>
+        <li>Widgets do not automatically become reusable website data.</li>
+        <li>Custom sections remain constrained by the surrounding layout.</li>
+      </ul>
+
+      <p>
+        A personalized website can instead treat businesses, events,
+        newsletters and notices as structured information. The
+        administrator completes one purpose-built form, and the website
+        determines how and where that information appears.
+      </p>
+    </section>
+
+    <aside class="pull-quote">
+      <blockquote>
+        “Build tools for Chamber staff—not web developers.”
+      </blockquote>
+
+      <cite>Administrative design principle</cite>
+    </aside>
+
+    <section
+      class="wide-section"
+      id="responses"
+    >
+      <span class="section-number">06 — Research to Design</span>
+
+      <h2>
+        Every recommendation responds to an observed problem.
+      </h2>
+
+      <div class="challenge-response">
+        <div class="challenge-row">
+          <div class="challenge-column">
+            <span class="column-label">Research Finding</span>
+            <p>
+              Visitor information and member information compete on the
+              homepage.
+            </p>
+          </div>
+
+          <div class="response-column">
+            <span class="column-label">Design Response</span>
+            <p>
+              Create a visitor-first homepage and a distinct Member
+              Resources pathway.
+            </p>
+          </div>
+        </div>
+
+        <div class="challenge-row">
+          <div class="challenge-column">
+            <span class="column-label">Research Finding</span>
+            <p>
+              Welcome and Indian Valley information are buried.
+            </p>
+          </div>
+
+          <div class="response-column">
+            <span class="column-label">Design Response</span>
+            <p>
+              Introduce Indian Valley, its communities and its identity
+              at the top of the homepage.
+            </p>
+          </div>
+        </div>
+
+        <div class="challenge-row">
+          <div class="challenge-column">
+            <span class="column-label">Research Finding</span>
+            <p>
+              Navigation repeats destinations and creates dead ends.
+            </p>
+          </div>
+
+          <div class="response-column">
+            <span class="column-label">Design Response</span>
+            <p>
+              Give every navigation item a unique purpose and every page
+              a clear next action.
+            </p>
+          </div>
+        </div>
+
+        <div class="challenge-row">
+          <div class="challenge-column">
+            <span class="column-label">Research Finding</span>
+            <p>
+              Member records are spread across multiple content areas.
+            </p>
+          </div>
+
+          <div class="response-column">
+            <span class="column-label">Design Response</span>
+            <p>
+              Maintain one searchable directory powered by one master
+              business record.
+            </p>
+          </div>
+        </div>
+
+        <div class="challenge-row">
+          <div class="challenge-column">
+            <span class="column-label">Research Finding</span>
+            <p>
+              Temporary programs dominate permanent visitor information.
+            </p>
+          </div>
+
+          <div class="response-column">
+            <span class="column-label">Design Response</span>
+            <p>
+              Place grants, applications and notices in Member Resources
+              or an expiring Bulletin Board.
+            </p>
+          </div>
+        </div>
+
+        <div class="challenge-row">
+          <div class="challenge-column">
+            <span class="column-label">Research Finding</span>
+            <p>
+              Forms and plugins can break after configuration changes or
+              software updates.
+            </p>
+          </div>
+
+          <div class="response-column">
+            <span class="column-label">Design Response</span>
+            <p>
+              Use stable, purpose-built integrations and minimize plugin
+              dependency.
+            </p>
+          </div>
+        </div>
+
+        <div class="challenge-row">
+          <div class="challenge-column">
+            <span class="column-label">Research Finding</span>
+            <p>
+              Mobile feels crowded and animations interrupt scrolling.
+            </p>
+          </div>
+
+          <div class="response-column">
+            <span class="column-label">Design Response</span>
+            <p>
+              Use generous spacing, shorter content groups and minimal
+              motion.
+            </p>
+          </div>
+        </div>
+
+        <div class="challenge-row">
+          <div class="challenge-column">
+            <span class="column-label">Research Finding</span>
+            <p>
+              Public website comments would require ongoing moderation.
+            </p>
+          </div>
+
+          <div class="response-column">
+            <span class="column-label">Design Response</span>
+            <p>
+              Keep the website as the permanent record and direct
+              conversation to email and social media.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="article-section"
+      id="structure"
+    >
+      <span class="section-number">07 — Recommended Structure</span>
+
+      <h2>
+        A simpler system behind a more useful public experience.
+      </h2>
+
+      <div class="recommended-structure">
+        <article class="structure-item">
+          <div>
+            <h3>Welcome to Indian Valley</h3>
+            <p>
+              Landscape, community identity and an immediate introduction
+              to the region.
+            </p>
+          </div>
+        </article>
+
+        <article class="structure-item">
+          <div>
+            <h3>Explore Indian Valley</h3>
+            <p>
+              Events, lodging, food, shopping, recreation and the
+              communities that make up the valley.
+            </p>
+          </div>
+        </article>
+
+        <article class="structure-item">
+          <div>
+            <h3>Business Directory</h3>
+            <p>
+              Searchable member listings organized by category, location
+              and service.
+            </p>
+          </div>
+        </article>
+
+        <article class="structure-item">
+          <div>
+            <h3>Events</h3>
+            <p>
+              Structured event pages with dates, locations, images,
+              descriptions and social sharing.
+            </p>
+          </div>
+        </article>
+
+        <article class="structure-item">
+          <div>
+            <h3>Newsletters</h3>
+            <p>
+              An admin form for creating newsletters that can be emailed,
+              archived online and shared.
+            </p>
+          </div>
+        </article>
+
+        <article class="structure-item">
+          <div>
+            <h3>Member Resources</h3>
+            <p>
+              Grants, renewals, documents, forms, applications and
+              participation opportunities.
+            </p>
+          </div>
+        </article>
+
+        <article class="structure-item">
+          <div>
+            <h3>Community Bulletin Board</h3>
+            <p>
+              Temporary notices with expiration dates so outdated
+              information does not remain indefinitely.
+            </p>
+          </div>
+        </article>
+
+        <article class="structure-item">
+          <div>
+            <h3>Chamber Administration</h3>
+            <p>
+              One dashboard for managing businesses, events, newsletters,
+              documents and notices without editing website code.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section
+      class="principles"
+      id="principles"
+    >
+      <span class="section-number">08 — Design Principles</span>
+
+      <h2>
+        The standards that should guide every decision.
+      </h2>
+
+      <p>
+        These principles translate the research into a consistent design
+        and development philosophy.
+      </p>
+
+      <div class="principles-grid">
+        <article class="principle">
+          <span>01</span>
+          <p>Design for visitors first.</p>
+        </article>
+
+        <article class="principle">
+          <span>02</span>
+          <p>
+            Build tools for Chamber staff—not web developers.
+          </p>
+        </article>
+
+        <article class="principle">
+          <span>03</span>
+          <p>
+            The website should manage content—not require administrators
+            to manage the website.
+          </p>
+        </article>
+
+        <article class="principle">
+          <span>04</span>
+          <p>
+            Every page should help the visitor accomplish something or
+            discover what comes next.
+          </p>
+        </article>
+
+        <article class="principle">
+          <span>05</span>
+          <p>
+            The website should be the permanent record. Social media
+            should be the conversation.
+          </p>
+        </article>
+
+        <article class="principle">
+          <span>06</span>
+          <p>
+            Motion should support navigation, not compete with it.
+          </p>
+        </article>
+
+        <article class="principle">
+          <span>07</span>
+          <p>
+            Preserve the identity. Promote the opportunity.
+          </p>
+        </article>
+
+        <article class="principle">
+          <span>08</span>
+          <p>
+            Keep the experience open, calm and readable on every screen.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="final-statement">
+      <p class="eyebrow">Final Direction</p>
+
+      <h2>
+        Keep what feels familiar. Remove what makes it difficult.
+      </h2>
+
+      <p>
+        The proposed website should not abandon the current site's
+        simplicity. It should preserve its readability while introducing
+        clearer priorities, more useful visitor pathways and an
+        administrative system designed specifically for the Indian Valley
+        Chamber of Commerce.
+      </p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-title">
+          Indian Valley Chamber Website Research
+        </div>
+
+        <p class="footer-text">
+          UX research and design strategy prepared by Arron Alsop.<br>
+          Indian Valley, California.
+        </p>
+      </div>
+
+      <a class="back-to-top" href="#top">
+        Back to top ↑
+      </a>
+    </div>
+  </footer>
+
+  <script>
+    const progressBar = document.getElementById("readingProgress");
+
+    function updateReadingProgress() {
+      const scrollTop =
+        window.scrollY || document.documentElement.scrollTop;
+
+      const scrollableHeight =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+
+      const progress =
+        scrollableHeight > 0
+          ? (scrollTop / scrollableHeight) * 100
+          : 0;
+
+      progressBar.style.width = `${Math.min(progress, 100)}%`;
+    }
+
+    window.addEventListener("scroll", updateReadingProgress, {
+      passive: true
+    });
+
+    window.addEventListener("resize", updateReadingProgress);
+
+    updateReadingProgress();
+  </script>
+</body>
+</html>
